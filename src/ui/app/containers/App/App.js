@@ -13,6 +13,7 @@ import Welcome from 'containers/Welcome/Welcome';
 import LuckyNumber from 'containers/LuckyNumber/LuckyNumber';
 import NotFound from 'containers/NotFound/NotFound';
 
+
 const App = () => (
   <div className="app-wrapper">
     <Helmet
@@ -21,6 +22,7 @@ const App = () => (
     >
       <meta name="description" content="Step 1: Complete code challenge, Step 2: Interview, Step 3: ???, Step 4: Profit!" />
     </Helmet>
+
 
     <Switch>
       <Route exact path="/" component={Welcome} />

@@ -13,4 +13,28 @@ export function getLuckyNumber(username) {
   };
 }
 
+// APPROACH #1 attempting to pass values from submit
+export const submitWelcome = (values) => ({
+  type: DISPATCH_ACTIONS.SUBMIT_WELCOME,
+  payload: {
+    values
+  }
+});
+
+// APPROACH #2 attempting to pass values from submit
+// export function submitWelcome() {
+//   return (dispatch, getState) => {
+//     const form = getState().form;
+//     const user = {
+//       username: form.welcome.username.value,
+//       firstName: form.welcome.firstName.value,
+//       lastName: form.welcome.lastName.value
+//     };
+//     dispatch({
+//       type: DISPATCH_ACTIONS.SUBMIT_WELCOME,
+//       user
+//     });
+//   };
+// }
+
 // TODO: Add more actions if needed

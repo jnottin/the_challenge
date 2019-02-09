@@ -20,12 +20,15 @@ import WelcomeForm from 'components/WelcomeForm/WelcomeForm';
 import { CONTAINER_KEY } from '../constants';
 import saga from '../saga';
 import reducer from '../reducer';
+import { validate } from '../../components/WelcomeForm/validate';
+import { submitWelcome } from '../actions';
+// import store from '../../configureStore';
 
 class Welcome extends React.PureComponent {
   constructor(props) {
     super(props);
 
-    this.submit = this.submit.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   /**
@@ -34,12 +37,14 @@ class Welcome extends React.PureComponent {
    * @see https://redux-form.com/7.4.2/docs/gettingstarted.md/#step-4-of-4-reacting-to-submit
    * @param {*} values An immutable map of the Redux Form values
    */
-  submit(values) {
+  handleSubmit(values) {
     const { dispatch } = this.props;
-
+    // console.log(values);
+    // console.log(dispatch);
     // TODO: Get the form values and invoke the service layer
 
-    dispatch(???);
+    // submitWelcome();
+    dispatch({ type: 'SUBMIT_WELCOME', values });
   }
 
   render() {
@@ -50,7 +55,8 @@ class Welcome extends React.PureComponent {
         </Helmet>
 
         <div className="mt5 pa4 center w-25 bg-light-gray">
-          <WelcomeForm onSubmit={???} />
+
+          <WelcomeForm onSubmit={this.handleSubmit} validate={validate} />
         </div>
       </article>
     );

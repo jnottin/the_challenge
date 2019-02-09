@@ -6,6 +6,8 @@ import { fromJS } from 'immutable';
 import { combineReducers } from 'redux-immutable';
 import { LOCATION_CHANGE } from 'react-router-redux';
 import { reducer as formReducer } from 'redux-form/immutable';
+import { DISPATCH_ACTIONS } from './containers/constants';
+
 
 /*
  * routeReducer
@@ -34,6 +36,7 @@ function routeReducer(state = routeInitialState, action) {
       return state;
   }
 }
+
 
 /**
  * Creates the main reducer with the dynamically injected ones
