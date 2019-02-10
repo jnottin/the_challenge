@@ -22,16 +22,22 @@ const initialStateForm = fromJS({
   addingUser: false,
 });
 
-function reducer(state = initialStateForm, action) {
-  console.log(action.payload);
+function reducer(state = initialStateForm, action, values) {
+  // console.log(action.payload);
+  // console.log(values);
   switch (action.type) {
     case DISPATCH_ACTIONS.SUBMIT_WELCOME:
       // APPROACH #1 attempting collect values from submit
-      return Object.assign({}, state, {
+      return {
+        ...state,
+        // Values are undefined but I know it will be values.x I need to call
+        // username: values.username,
+        // firstName: values.firstName,
+        // lastName: values.lastName
         username: action.payload,
         firstName: action.payload,
         lastName: action.payload
-      });
+      };
     // APPROACH #2 attempting collect values from submit
     // return Object.assign({}, state, {
     //   addingUser: false,

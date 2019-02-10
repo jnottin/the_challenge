@@ -21,7 +21,7 @@ import { CONTAINER_KEY } from '../constants';
 import saga from '../saga';
 import reducer from '../reducer';
 import { validate } from '../../components/WelcomeForm/validate';
-import { submitWelcome } from '../actions';
+// import { submitWelcome } from '../actions';
 // import store from '../../configureStore';
 
 class Welcome extends React.PureComponent {
@@ -39,7 +39,8 @@ class Welcome extends React.PureComponent {
    */
   handleSubmit(values) {
     const { dispatch } = this.props;
-    // console.log(values);
+
+    console.log(values);
     // console.log(dispatch);
     // TODO: Get the form values and invoke the service layer
 

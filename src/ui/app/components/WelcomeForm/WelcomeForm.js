@@ -11,14 +11,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { reduxForm, Field } from 'redux-form/immutable';
 import Button from '@material-ui/core/Button';
-// import { validate } from 'components/WelcomeForm/validate';
+import { validate } from 'components/WelcomeForm/validate';
 
 import { RFTextField } from 'components/ReduxFormFields/RFTextField';
 
 class WelcomeForm extends React.PureComponent {
   render() {
-    const { handleSubmit } = this.props;
-
+    const { handleSubmit, fields: { username, firstName, lastName } } = this.props;
     return (
       <form className="flex flex-column" onSubmit={handleSubmit}>
         {/* TODO: Add elements to form to collect user input */}
@@ -26,16 +25,19 @@ class WelcomeForm extends React.PureComponent {
           name="username"
           component={RFTextField}
           label="Username"
+          {...username}
         />
         <Field
           name="firstName"
           component={RFTextField}
           label="First Name"
+          {...firstName}
         />
         <Field
           name="lastName"
           component={RFTextField}
           label="Last Name"
+          {...lastName}
         />
         <div className="center mt3">
           <Button variant="contained" color="primary" type="submit">
@@ -49,6 +51,8 @@ class WelcomeForm extends React.PureComponent {
 
 WelcomeForm.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
+  fields: PropTypes.any,
+  // username: PropTypes.any,
 };
 
 // TODO: Add validation
@@ -56,5 +60,5 @@ WelcomeForm.propTypes = {
 export default reduxForm({
   form: 'welcome',
   fields: ['username', 'firstName', 'lastName'],
-  // validate,
+  validate,
 })(WelcomeForm);
