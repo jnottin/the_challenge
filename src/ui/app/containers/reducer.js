@@ -10,9 +10,9 @@ import { fromJS } from 'immutable';
 import { DISPATCH_ACTIONS } from './constants';
 
 // TODO: Initialize more things in the Redux store if needed
-// const initialState = fromJS({
-//   luckyNumber: -1
-// });
+const initialState = fromJS({
+  luckyNumber: -1
+});
 
 const initialStateForm = fromJS({
   username: 'sdf',
