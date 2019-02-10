@@ -23,7 +23,7 @@ const initialStateForm = fromJS({
 });
 
 function reducer(state = initialStateForm, action, values) {
-  // console.log(action.payload);
+  console.log(action);
   // console.log(values);
   switch (action.type) {
     case DISPATCH_ACTIONS.SUBMIT_WELCOME:
@@ -34,9 +34,11 @@ function reducer(state = initialStateForm, action, values) {
         // username: values.username,
         // firstName: values.firstName,
         // lastName: values.lastName
-        username: action.payload,
-        firstName: action.payload,
-        lastName: action.payload
+
+        // Action gives the entire Map Object, when i really want just the values
+        username: action,
+        firstName: action,
+        lastName: action
       };
     // APPROACH #2 attempting collect values from submit
     // return Object.assign({}, state, {
@@ -46,7 +48,6 @@ function reducer(state = initialStateForm, action, values) {
     //     action.user
     //   ]
     // });
-    // TODO: Set things in the Redux store
     default:
       return state;
   }
