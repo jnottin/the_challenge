@@ -7,15 +7,20 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+// import axios from 'axios';
 
 class LuckyNumberDisplay extends React.PureComponent {
   render() {
     // TODO: Receive props passed down from LuckyNumber container
-    // const { } = this.props;
+    const { firstName, lastName } = this.props;
+    console.log(firstName);
 
     return (
       <div className="mt5 pa4 center w-25 bg-light-gray">
         {/* TODO: Display the user's full name and their lucky number */}
+        <h2>Hello, {firstName} {lastName}!</h2>
+        <h2>Your lucky number is</h2>
+        <h2>Lucky Number</h2>
       </div>
     );
   }
@@ -23,7 +28,8 @@ class LuckyNumberDisplay extends React.PureComponent {
 
 // TODO: Add PropTypes
 LuckyNumberDisplay.propTypes = {
-
+  firstName: PropTypes.any,
+  lastName: PropTypes.any
 };
 
 export default LuckyNumberDisplay;

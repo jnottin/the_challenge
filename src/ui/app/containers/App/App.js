@@ -26,7 +26,7 @@ const App = () => (
 
     <Switch>
       <Route exact path="/" component={Welcome} />
-      <Route path="/lucky" component={LuckyNumber} />
+      <Route exact path="/lucky" component={LuckyNumber} />
       <Route path="" component={NotFound} />
     </Switch>
   </div>

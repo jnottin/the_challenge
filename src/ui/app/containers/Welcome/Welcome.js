@@ -22,7 +22,6 @@ import saga from '../saga';
 import reducer from '../reducer';
 import { validate } from '../../components/WelcomeForm/validate';
 // import { submitWelcome } from '../actions';
-// import store from '../../configureStore';
 
 class Welcome extends React.PureComponent {
   constructor(props) {
@@ -40,12 +39,13 @@ class Welcome extends React.PureComponent {
   handleSubmit(values) {
     const { dispatch } = this.props;
 
-    console.log(values);
+    // console.log(values);
+    // const storeState = store.getState();
+    // console.log(storeState);
     // console.log(dispatch);
     // TODO: Get the form values and invoke the service layer
 
-    // submitWelcome();
-    dispatch({ type: 'SUBMIT_WELCOME', values });
+    dispatch({ type: `${CONTAINER_KEY}SUBMIT_WELCOME`, payload: { values } });
   }
 
   render() {
@@ -59,6 +59,7 @@ class Welcome extends React.PureComponent {
 
           <WelcomeForm onSubmit={this.handleSubmit} validate={validate} />
         </div>
+        <a href="/lucky">Go To Lucky Page</a>
       </article>
     );
   }

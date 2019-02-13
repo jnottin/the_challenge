@@ -14,16 +14,19 @@ const initialState = fromJS({
   luckyNumber: -1
 });
 
+
 const initialStateForm = fromJS({
-  username: 'sdf',
-  firstName: '',
-  lastName: '',
-  user: [],
+  username: 'initial Username',
+  firstName: 'initial firstName',
+  lastName: 'initial lastName',
+  users: [],
   addingUser: false,
 });
 
 function reducer(state = initialStateForm, action, values) {
-  console.log(action);
+  // console.log(action.values.username);
+  // console.log(action.values.firstName);
+  // console.log(action.payload);
   // console.log(values);
   switch (action.type) {
     case DISPATCH_ACTIONS.SUBMIT_WELCOME:
@@ -36,16 +39,19 @@ function reducer(state = initialStateForm, action, values) {
         // lastName: values.lastName
 
         // Action gives the entire Map Object, when i really want just the values
-        username: action,
-        firstName: action,
-        lastName: action
+        username: action.username,
+        firstName: action.firstName,
+        lastName: action.lastName
       };
     // APPROACH #2 attempting collect values from submit
     // return Object.assign({}, state, {
-    //   addingUser: false,
-    //   user: [
-    //     ...state.user,
-    //     action.user
+    //   users: [
+    //     ...state.users,
+    //     {
+    //       username: action.username,
+    //       firstName: action.firstName,
+    //       lastName: action.lastName,
+    //     }
     //   ]
     // });
     default:
