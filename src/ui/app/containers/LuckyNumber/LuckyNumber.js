@@ -14,13 +14,9 @@ import PropTypes from 'prop-types';
 import { CONTAINER_KEY } from '../constants';
 
 class LuckyNumber extends React.PureComponent {
-  componentDidMount() {
-    const { dispatch } = this.props;
-    const username = 'jnottin92@gmail.com';
-    dispatch({ type: `${CONTAINER_KEY}GET_LUCKY_NUMBER`, payload: { username } });
-  }
   render() {
     console.log('LuckyNumber');
+    // console.log(firstName);
     return (
       <article>
         <Helmet>
@@ -33,13 +29,12 @@ class LuckyNumber extends React.PureComponent {
 }
 
 LuckyNumberDisplay.propTypes = {
-  dispatch: PropTypes.func.isRequired,
   firstName: PropTypes.any,
   lastName: PropTypes.any,
-  username: PropTypes.any,
 };
 
 function mapStateToProps(state) {
+  console.log('MapStateToProps: ');
   console.log(state);
   return {
     firstName: state.firstName,

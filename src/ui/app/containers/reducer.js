@@ -30,7 +30,7 @@ function reducer(state = initialStateForm, action) {
       return {
         ...action.payload,
       };
-    case DISPATCH_ACTIONS.GET_LUCKY_NUMBER:
+    case DISPATCH_ACTIONS.RECEIVE_LUCKY_NUMBER:
       // Attemping to get Lucky Number
       return {
         ...action.payload,
