@@ -9,10 +9,16 @@ import React from 'react';
 import LuckyNumberDisplay from 'components/LuckyNumberDisplay/LuckyNumberDisplay';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
+import PropTypes from 'prop-types';
 
 import { CONTAINER_KEY } from '../constants';
 
 class LuckyNumber extends React.PureComponent {
+  componentDidMount() {
+    const { dispatch } = this.props;
+    const username = 'jnottin92@gmail.com';
+    dispatch({ type: `${CONTAINER_KEY}GET_LUCKY_NUMBER`, payload: { username } });
+  }
   render() {
     console.log('LuckyNumber');
     return (
@@ -26,8 +32,15 @@ class LuckyNumber extends React.PureComponent {
   }
 }
 
+LuckyNumberDisplay.propTypes = {
+  dispatch: PropTypes.func.isRequired,
+  firstName: PropTypes.any,
+  lastName: PropTypes.any,
+  username: PropTypes.any,
+};
+
 function mapStateToProps(state) {
-  // TODO: Get values from Redux store
+  console.log(state);
   return {
     firstName: state.firstName,
     lastName: state.lastName

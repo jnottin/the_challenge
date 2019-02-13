@@ -6,12 +6,21 @@
 
 import { DISPATCH_ACTIONS } from './constants';
 
+
 export function getLuckyNumber(username) {
   return {
     type: DISPATCH_ACTIONS.GET_LUCKY_NUMBER,
     username
   };
 }
+
+export function receiveLuckyNumber(data) {
+  return {
+    type: DISPATCH_ACTIONS.GET_LUCKY_NUMBER,
+    data
+  };
+}
+
 
 // APPROACH #1 attempting to pass values from submit
 export const submitWelcome = (values) => ({

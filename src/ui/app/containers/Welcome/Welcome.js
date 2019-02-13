@@ -37,13 +37,6 @@ class Welcome extends React.PureComponent {
    */
   handleSubmit(values) {
     const { dispatch } = this.props;
-
-    // console.log(values);
-    // const storeState = store.getState();
-    // console.log(storeState);
-    // console.log(dispatch);
-    // TODO: Get the form values and invoke the service layer
-
     dispatch({ type: `${CONTAINER_KEY}SUBMIT_WELCOME`, payload: { values } });
   }
 

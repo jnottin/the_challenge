@@ -13,7 +13,6 @@ class LuckyNumberDisplay extends React.PureComponent {
   render() {
     // TODO: Receive props passed down from LuckyNumber container
     const { firstName, lastName } = this.props;
-    console.log(firstName);
 
     return (
       <div className="mt5 pa4 center w-25 bg-light-gray">

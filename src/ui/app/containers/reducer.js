@@ -26,7 +26,12 @@ const initialStateForm = fromJS({
 function reducer(state = initialStateForm, action) {
   switch (action.type) {
     case DISPATCH_ACTIONS.SUBMIT_WELCOME:
-      // APPROACH #1 attempting collect values from submit
+      // Collecting values from submit
+      return {
+        ...action.payload,
+      };
+    case DISPATCH_ACTIONS.GET_LUCKY_NUMBER:
+      // Attemping to get Lucky Number
       return {
         ...action.payload,
       };

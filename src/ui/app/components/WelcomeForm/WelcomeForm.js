@@ -17,7 +17,7 @@ import { RFTextField } from 'components/ReduxFormFields/RFTextField';
 
 class WelcomeForm extends React.PureComponent {
   render() {
-    const { handleSubmit, fields: { username, firstName, lastName } } = this.props;
+    const { handleSubmit } = this.props;
     return (
       <form className="flex flex-column" onSubmit={handleSubmit}>
         {/* TODO: Add elements to form to collect user input */}
@@ -25,19 +25,16 @@ class WelcomeForm extends React.PureComponent {
           name="username"
           component={RFTextField}
           label="Username"
-          {...username}
         />
         <Field
           name="firstName"
           component={RFTextField}
           label="First Name"
-          {...firstName}
         />
         <Field
           name="lastName"
           component={RFTextField}
           label="Last Name"
-          {...lastName}
         />
         <div className="center mt3">
           <Button variant="contained" color="primary" type="submit">
@@ -51,8 +48,6 @@ class WelcomeForm extends React.PureComponent {
 
 WelcomeForm.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
-  fields: PropTypes.any,
-  // username: PropTypes.any,
 };
 
 // TODO: Add validation
