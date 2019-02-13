@@ -16,12 +16,12 @@ import { CONTAINER_KEY } from '../constants';
 class LuckyNumber extends React.PureComponent {
   render() {
     console.log('LuckyNumber');
-    // console.log(firstName);
     return (
       <article>
         <Helmet>
           <title>Lucky Number</title>
         </Helmet>
+        {/* <h1>{firstName}</h1> */}
         <LuckyNumberDisplay {...this.props} />
       </article>
     );
@@ -33,12 +33,15 @@ LuckyNumberDisplay.propTypes = {
   lastName: PropTypes.any,
 };
 
-function mapStateToProps(state) {
+function mapStateToProps(rootState) {
   console.log('MapStateToProps: ');
-  console.log(state);
+  const userData = rootState.get('code-challenge/welcome');
+  // const username = userData.values.get('username');
+  const firstName = userData.values.get('firstName');
+  const lastName = userData.values.get('lastName');
   return {
-    firstName: state.firstName,
-    lastName: state.lastName
+    firstName: firstName,
+    lastName: lastName
   };
 }
 

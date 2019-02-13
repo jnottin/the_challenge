@@ -13,30 +13,31 @@
  */
 
 // import { CONTAINER_KEY } from '../../containers/constants';
-import { push } from 'react-router-redux'
 
 
 // Validation is ready just values are not displaying correctly
 export const validate = (values) => {
-  if (values["_root"]) {
-    // console.log(values["_root"]["entries"][0].length);
-    const errors = {};
+  console.log(values);
+  const username = values.get('username');
+  const firstName = values.get('firstName');
+  const lastName = values.get('lastName');
 
-    if (values["_root"]["entries"][0] && !values["_root"]["entries"][0].length < 2) {
-      errors.username = true;
-    }
-    if (values["_root"]["entries"][1] && !values["_root"]["entries"][1].length < 2) {
-      errors.firstName = true;
-    }
-    if (values["_root"]["entries"][2] && !values["_root"]["entries"][2].length < 2) {
-      errors.lastName = true;
-    }
+  const errors = {};
 
-    // console.log(errors);
-
-    // TODO: Validate that the user has entered a username, first name, and last name
-
-    // once values works correctly I will uncomment below
-    // return errors;
+  if (!username) {
+    errors.username = true;
   }
+  if (!firstName) {
+    errors.firstName = true;
+  }
+  if (!lastName) {
+    errors.lastName = true;
+  }
+
+  // console.log(errors);
+
+  // TODO: Validate that the user has entered a username, first name, and last name
+
+  // once values works correctly I will uncomment below
+  return errors;
 };
