@@ -21,7 +21,6 @@ import { CONTAINER_KEY } from '../constants';
 import saga from '../saga';
 import reducer from '../reducer';
 import { validate } from '../../components/WelcomeForm/validate';
-// import { submitWelcome } from '../actions';
 
 class Welcome extends React.PureComponent {
   constructor(props) {
