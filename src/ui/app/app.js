@@ -29,6 +29,7 @@ import '!file-loader?name=[name].[ext]!./images/favicon.ico';
 import 'styles/theme.scss';
 
 import configureStore from './configureStore';
+import { loadState, saveState } from './localStorage';
 
 // Observe loading of Open Sans (to remove open sans, remove the <link> tag in
 // the index.html file and this observer)
@@ -41,20 +42,25 @@ openSansObserver.load().then(() => {
   document.body.classList.remove('fontLoaded');
 });
 
+const persistedState = loadState();
+
 // Create redux store with history
 const initialState = {};
 const history = createHistory();
-const store = configureStore(initialState, history);
+const store = configureStore(initialState, history, persistedState);
 const MOUNT_NODE = document.getElementById('app');
+
+// Keep state even after refresh
 
 
 // console.log(store.getState());
-
-
 // Every time the state changes, log it
 // Note that subscribe() returns a function for unregistering the listener
 // const unsubscribe = store.subscribe(() => console.log(store.getState()));
 
+store.subscribe(() => {
+  saveState(store.getState());
+});
 
 const render = () => {
   ReactDOM.render(

@@ -11,28 +11,26 @@
 
 import { call, put, takeLatest } from 'redux-saga/effects';
 import { push } from 'react-router-redux';
-
 import request from 'utils/request';
+// import receiveLuckyNumber from './actions';
 
-import { DISPATCH_ACTIONS } from './constants';
+import { DISPATCH_ACTIONS, CONTAINER_KEY } from './constants';
 
-export function* getLuckyNumber({ username }) {
-  console.log('hit getLuckyNumber saga function');
-  // TODO: What port is the service layer running on again?
-  const requestUrl = `http://localhost:1337/lucky-number?username=${username}`;
+export function* getLuckyNumber({ payload }) {
+  const requestUrl = `http://localhost:1337/lucky-number?username=${payload.username}`;
 
   try {
     const result = yield call(request, requestUrl);
-    console.log(result);
-    // yield put({ type: 'GET_LUCKY_NUMBER_SUCCEEDED', luckyNumber: luckyNumber });
-
-    // TODO: Do stuff with the result
+    yield put({ type: DISPATCH_ACTIONS.GET_LUCKY_NUMBER_SUCCESS, payload: result.luckyNumber });
   } catch (err) {
     console.log(err);
+    yield put({ type: DISPATCH_ACTIONS.GET_LUCKY_NUMBER_ERROR, payload: err.message });
     // TODO: Bonus points for some error handling
   }
+
+  yield put(push('/lucky'));
 }
 
 export default function* sagaFunction() {
-  yield takeLatest(DISPATCH_ACTIONS.GET_LUCKY_NUMBER, getLuckyNumber);
+  yield takeLatest(`${CONTAINER_KEY}GET_LUCKY_NUMBER`, getLuckyNumber);
 }

@@ -37,11 +37,14 @@ export default function configureStore(initialState = {}, history) {
       : compose;
   /* eslint-enable */
 
+
   const store = createStore(
     createReducer(),
     fromJS(initialState),
-    composeEnhancers(...enhancers)
+    composeEnhancers(...enhancers),
+
   );
+
 
   // Extensions
   store.runSaga = sagaMiddleware.run;

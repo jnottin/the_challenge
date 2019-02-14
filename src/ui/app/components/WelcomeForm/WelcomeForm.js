@@ -20,7 +20,6 @@ class WelcomeForm extends React.PureComponent {
     const { handleSubmit } = this.props;
     return (
       <form className="flex flex-column" onSubmit={handleSubmit}>
-        {/* TODO: Add elements to form to collect user input */}
         <Field
           name="username"
           component={RFTextField}
@@ -50,7 +49,6 @@ WelcomeForm.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
 };
 
-// TODO: Add validation
 // @see https://redux-form.com/7.4.2/docs/api/reduxform.md/
 export default reduxForm({
   form: 'welcome',

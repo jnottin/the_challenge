@@ -14,7 +14,6 @@ import { Helmet } from 'react-helmet';
 
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
-import { push } from 'react-router-redux';
 
 import WelcomeForm from 'components/WelcomeForm/WelcomeForm';
 
@@ -40,10 +39,8 @@ class Welcome extends React.PureComponent {
     const { dispatch } = this.props;
     dispatch({ type: `${CONTAINER_KEY}SUBMIT_WELCOME`, payload: { values } });
 
-    const username = 'jnottin92@gmail.com';
+    const username = values.get('username');
     dispatch({ type: `${CONTAINER_KEY}GET_LUCKY_NUMBER`, payload: { username } });
-
-    dispatch(push('/lucky'));
   }
 
   render() {

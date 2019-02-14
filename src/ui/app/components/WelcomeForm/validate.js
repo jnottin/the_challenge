@@ -12,12 +12,9 @@
  * @returns An errors object with any validation errors
  */
 
-// import { CONTAINER_KEY } from '../../containers/constants';
-
 
 // Validation is ready just values are not displaying correctly
 export const validate = (values) => {
-  console.log(values);
   const username = values.get('username');
   const firstName = values.get('firstName');
   const lastName = values.get('lastName');
@@ -34,10 +31,5 @@ export const validate = (values) => {
     errors.lastName = true;
   }
 
-  // console.log(errors);
-
-  // TODO: Validate that the user has entered a username, first name, and last name
-
-  // once values works correctly I will uncomment below
   return errors;
 };

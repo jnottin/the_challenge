@@ -9,39 +9,29 @@ import React from 'react';
 import LuckyNumberDisplay from 'components/LuckyNumberDisplay/LuckyNumberDisplay';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
-import PropTypes from 'prop-types';
 
 import { CONTAINER_KEY } from '../constants';
 
 class LuckyNumber extends React.PureComponent {
   render() {
-    console.log('LuckyNumber');
     return (
       <article>
         <Helmet>
           <title>Lucky Number</title>
         </Helmet>
-        {/* <h1>{firstName}</h1> */}
         <LuckyNumberDisplay {...this.props} />
       </article>
     );
   }
 }
 
-LuckyNumberDisplay.propTypes = {
-  firstName: PropTypes.any,
-  lastName: PropTypes.any,
-};
-
 function mapStateToProps(rootState) {
-  console.log('MapStateToProps: ');
-  const userData = rootState.get('code-challenge/welcome');
-  // const username = userData.values.get('username');
-  const firstName = userData.values.get('firstName');
-  const lastName = userData.values.get('lastName');
+  const userData = rootState.get(CONTAINER_KEY);
   return {
-    firstName: firstName,
-    lastName: lastName
+    firstName: userData.values.get('firstName'),
+    lastName: userData.values.get('lastName'),
+    username: userData.values.get('username'),
+    luckyNumber: userData.luckyNumber,
   };
 }
 
